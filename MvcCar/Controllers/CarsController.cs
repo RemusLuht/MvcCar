@@ -20,15 +20,33 @@ namespace MvcCar.Controllers
         }
 
         // GET: Cars
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string CarColor, string searchString)
         {
+            // Use LINQ to get list of genres.
+            IQueryable<string> genreQuery = from m in _context.Car
+                                            orderby m.Color
+                                            select m.Color;
+
             var cars = from m in _context.Car
-                       select m;
-            if (!String.IsNullOrEmpty(searchString))
+                         select m;
+
+            if (!string.IsNullOrEmpty(searchString))
             {
                 cars = cars.Where(s => s.Name.Contains(searchString));
             }
-            return View(await cars.ToListAsync());
+
+            if (!string.IsNullOrEmpty(CarColor))
+            {
+                cars = cars.Where(x => x.Color == CarColor);
+            }
+
+            var CarColorVM = new CarColorViewModel
+            {
+                CarColors = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Cars = await cars.ToListAsync()
+            };
+
+            return View(CarColorVM);
         }
 
         // GET: Cars/Details/5
