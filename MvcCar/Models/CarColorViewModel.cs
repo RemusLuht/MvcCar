@@ -2,9 +2,9 @@
 using MvcCar.Models;
 using System.Collections.Generic;
 
-namespace MvcMovie.Models
+namespace MvcCar.Models
 {
-    public class MovieGenreViewModel
+    public class CarColorViewModel
     {
         public List<Car> Cars { get; set; }
         public SelectList Colors { get; set; }
