@@ -26,7 +26,7 @@ namespace MvcCar.Models
                       Name = "BMW",
                       Color = "Black",
                       Speed = 120,
-                      Transmission = "Automatic",
+                      Transmission = "Automatic"
 
                   },
                    new Car
@@ -34,7 +34,7 @@ namespace MvcCar.Models
                        Name = "Audi",
                        Color = "White",
                        Speed = 110,
-                       Transmission = "Automatic",
+                       Transmission = "Automatic"
 
                    },
                     new Car
@@ -42,7 +42,7 @@ namespace MvcCar.Models
                         Name = "Fiat",
                         Color = "Red",
                         Speed = 85,
-                        Transmission = "Manual",
+                        Transmission = "Manual"
 
                     }
 
