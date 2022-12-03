@@ -23,7 +23,7 @@ namespace MvcCar.Controllers
         public async Task<IActionResult> Index(string CarColor, string searchString)
         {
             // Use LINQ to get list of genres.
-            IQueryable<string> genreQuery = from m in _context.Car
+            IQueryable<string> colorQuery = from m in _context.Car
                                             orderby m.Color
                                             select m.Color;
 
@@ -42,7 +42,7 @@ namespace MvcCar.Controllers
 
             var CarColorVM = new CarColorViewModel
             {
-                CarColors = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Colors = new SelectList(await colorQuery.Distinct().ToListAsync()),
                 Cars = await cars.ToListAsync()
             };
 
